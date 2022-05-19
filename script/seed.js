@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {Inventory} } = require('../server/db')
+const {db, models: {Inventory}} = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -18,7 +18,7 @@ async function seed() {
 
   console.log(`seeded successfully`)
   return {
-    stock: {
+    inventory: {
       shoes: stock[0],
       shirts: stock[1]
     }

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./db');
 
-const Inventory = db.define('user', {
+const Inventory = db.define('inventory', {
     name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -10,7 +10,7 @@ const Inventory = db.define('user', {
         }
     },
     qty: {
-        type: Sequelize.STRING,
+        type: Sequelize.FLOAT,
         allowNull: false,
         validate: {
             notEmpty: true
