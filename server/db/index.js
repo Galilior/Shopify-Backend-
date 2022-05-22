@@ -1,13 +1,11 @@
 //this is the access point for all things database related!
-const db = require('./db')
+const db = require('./database')
 
-const Inventory = require('./Inventory')
+const Inventory = require('./inventory')
 
 //associations could go here!
 
 module.exports = {
   db,
-  models: {
-    Inventory,
-  },
+  Inventory,
 }
