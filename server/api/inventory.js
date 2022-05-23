@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { models: { Inventory }} = require('../db')
+const Inventory = require('../db/inventory')
 module.exports = router
 
 
@@ -14,23 +14,35 @@ router.get('/', async (req, res, next) => {
   }
  })
 
-//route to edit items
-// router.put('/:name', async(req, res, next) => {
-//     try{
+ //route to edit items
+router.post('/:name', async(req, res, next) => {
+  try{
+    const item = await Inventory.create(req.body);
+    res.json(item);
+  }catch(err){
+      next(err)
+  }
+})
 
-//     }catch(err){
-//         next(err)
-//     }
-// })
+//route to edit items
+router.put('/:name', async(req, res, next) => {
+    try{
+      const item = await Inventory.findByPk(req.params.name);
+      res.send(await item.update(req.body));
+    }catch(err){
+        next(err)
+    }
+})
 
 //route to delete items
-// router.delete('/:name', async(req, res, next) => {
-//     try{
-
-//     }catch(err){
-//         next(err)
-//     }
-// })
+router.delete('/:name', async(req, res, next) => {
+    try{
+      const item = await Inventory.findByPk(req.params.name);
+      await item.destroy();
+    }catch(err){
+        next(err)
+    }
+})
 
 //route to create items
 // router.post('/', async(req, res, next) => {
